@@ -44,6 +44,35 @@ def project_detail(id):
         projects=projects,
         this_project=this_project)
 
+@app.route('/projects/<id>/edit')
+def edit_project(id):
+    this_project = Project.query.get_or_404(id)
+
+    if request.form:
+        this_project.title = request.form['title']
+        this_project.date = clean_date(request.form['date'])
+        this_project.description = request.form['desc']
+        this_project.skills = request.form['skills']
+        this_project.repo_link = request.form['github']
+
+        db.session.commit()
+
+        return redirect(url_for('index'))
+
+    projects = Project.query.all()
+
+    return render_template('projectform.html',
+        projects=projects,
+        this_project=this_project)
+
+@app.route('/projects/<id>/delete')
+def delete_project(id):
+    this_project = Project.query.get_or_404(id)
+    db.session.delete(this_project)
+    db.session.commit()
+
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     db.create_all()
     app.run(debug=True, port=8000, host='127.0.0.1')

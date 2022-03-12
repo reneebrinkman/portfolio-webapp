@@ -4,18 +4,18 @@
     <h1>New Project</h1>
 </section>
 <section id="form">
-    <form action="{{ url_for('new_project') }}" method="POST">
+    <form action="{% if this_project %}{{ url_for('edit_project', id=this_project.id)}}{% else %}{{ url_for('new_project') }}{% endif %}" method="POST">
         <label for="title">Project Title</label>
-        <input type="text" name="title" id="title" placeholder="Project Name" required>
+        <input type="text" name="title" id="title" placeholder="Project Name" required {% if this_project %}value="{{ this_project.title }}"{% endif %}>
         <label for="date">Completion Date</label>
-        <input type="month" name="date" id="date" required>
+        <input type="month" name="date" id="date" required {% if this_project}value="{{ this_project.date.strftime('%Y-%m') }}"{% endif %}>
         <label for="description">Description</label>
-        <textarea name="desc" id="description" cols="30" rows="20" placeholder="Description" required></textarea>
+        <textarea name="desc" id="description" cols="30" rows="20" placeholder="Description" required>{% if this_project %}{{ this_project.description }}{% endif %}</textarea>
         <label for="skills-list" id="skills-label">Skills</label>
         <p>Separate each skill by a comma</p>
-        <textarea name="skills" id="skills-list" cols="30" rows="10" placeholder="Skill, Skill" required></textarea>
+        <textarea name="skills" id="skills-list" cols="30" rows="10" placeholder="Skill, Skill" required>{% if this_project %}{{ this_project.skills }}{% endif %}</textarea>
         <label for="github">GitHub Link</label>
-        <input type="url" name="github" id="github" placeholder="Link to the repo" required>
+        <input type="url" name="github" id="github" placeholder="Link to the repo" required {% if this_project %}value="{{ this_project.repo_link }}"{% endif %}>
         <div>
             <button type="reset">Cancel</button>
             <button type="submit">Submit</button>
