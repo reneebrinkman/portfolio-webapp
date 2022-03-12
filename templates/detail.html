@@ -2,18 +2,17 @@
 
 {% block content %}
 <section class="header">
-    <h1>Python Title</h1>
-    <p>Jan 2021</p>
-    <a href="#" class="github-btn">
+    <h1>{{ this_project.title }}</h1>
+    <p>{{ this_project.date.strftime('%b %Y') }}</p>
+    <a href="{{ this_project.repo_link }}" class="github-btn">
         <i class="fab fa-github"></i>
         View on GitHub
     </a>
     <ul class="project-skills">
         <div>
-            <li>Catching exceptions</li>
-            <li>Creating a loop</li>
-            <li>Accepting user input</li>
-            <li>Conditional statements</li>
+          {% for skill in this_project.skills.split(', ') %}
+          <li>{{ skill }}</li>
+          {% endfor %}
         </div>
     </ul>
 </section>
@@ -21,10 +20,7 @@
     <div id="triangle5"></div>
     <h2>Description</h2>
     <p>
-        Lemon drops muffin macaroon pastry sweet muffin soufflé.
-        Chocolate cake sesame snaps gummi bears tiramisu toffee.
-        Ice cream toffee marshmallow sugar plum croissant chupa chups powder.
-        Cotton candy sweet caramels pastry candy.
+        {{ this_project.description }}
     </p>
     <div id="triangle6"></div>
 </section>
