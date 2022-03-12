@@ -8,7 +8,7 @@
         <label for="title">Project Title</label>
         <input type="text" name="title" id="title" placeholder="Project Name" required {% if this_project %}value="{{ this_project.title }}"{% endif %}>
         <label for="date">Completion Date</label>
-        <input type="month" name="date" id="date" required {% if this_project}value="{{ this_project.date.strftime('%Y-%m') }}"{% endif %}>
+        <input type="month" name="date" id="date" required {% if this_project %}value="{{ this_project.date.strftime('%Y-%m') }}"{% endif %}>
         <label for="description">Description</label>
         <textarea name="desc" id="description" cols="30" rows="20" placeholder="Description" required>{% if this_project %}{{ this_project.description }}{% endif %}</textarea>
         <label for="skills-list" id="skills-label">Skills</label>
