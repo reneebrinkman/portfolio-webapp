@@ -681,3 +681,8 @@ Media Queries
         width: 530px;
     }
 }
+
+#error {
+  padding: 15%;
+  background-color: var(--secondary);
+}
