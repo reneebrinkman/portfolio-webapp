@@ -3,6 +3,7 @@ from flask import (render_template,
 from models import db, app, Project
 import datetime
 
+
 def clean_date(date):
     date_split = date.split('-')
     year = int(date_split[0])
@@ -15,6 +16,11 @@ def clean_date(date):
 def index():
     projects = Project.query.all()
     return render_template('index.html', projects=projects)
+
+@app.route('/about')
+def about():
+    projects = Project.query.all()
+    return render_template('about.html', projects=projects)
 
 @app.route('/projects/new', methods=['GET', 'POST'])
 def new_project():
