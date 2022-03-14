@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<section id="error">
+  <main>
+    <h1>Oops! Something went wrong!</h1>
+    <p>I'm afraid this is what we in the business call a 404 error.
+      Or in human terms, the page you're looking for does not exist.
+      Maybe try circling back to the <a href="{{ url_for('index') }}">home page</a>
+      to find what you're looking for? I'm sure it's out there somewhere!</p>
+  </main>
+</section>
+{% endblock %}
