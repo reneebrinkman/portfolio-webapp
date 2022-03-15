@@ -1,4 +1,5 @@
-from flask import (render_template,
+from flask import (
+    render_template,
     url_for, redirect, request)
 from models import db, app, Project
 import datetime
@@ -12,15 +13,18 @@ def clean_date(date):
 
     return completion_date
 
+
 @app.route('/')
 def index():
     projects = Project.query.all()
     return render_template('index.html', projects=projects)
 
+
 @app.route('/about')
 def about():
     projects = Project.query.all()
     return render_template('about.html', projects=projects)
+
 
 @app.route('/projects/new', methods=['GET', 'POST'])
 def new_project():
@@ -37,18 +41,21 @@ def new_project():
 
         return redirect(url_for('index'))
 
-    projects=Project.query.all()
+    projects = Project.query.all()
 
     return render_template('projectform.html', projects=projects)
+
 
 @app.route('/projects/<id>')
 def project_detail(id):
     projects = Project.query.all()
     this_project = Project.query.get_or_404(id)
 
-    return render_template('detail.html',
+    return render_template(
+        'detail.html',
         projects=projects,
         this_project=this_project)
+
 
 @app.route('/projects/<id>/edit', methods=['GET', 'POST'])
 def edit_project(id):
@@ -67,9 +74,11 @@ def edit_project(id):
 
     projects = Project.query.all()
 
-    return render_template('projectform.html',
+    return render_template(
+        'projectform.html',
         projects=projects,
         this_project=this_project)
+
 
 @app.route('/projects/<id>/delete')
 def delete_project(id):
@@ -79,9 +88,11 @@ def delete_project(id):
 
     return redirect(url_for('index'))
 
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html'), 404
+
 
 if __name__ == '__main__':
     db.create_all()
