@@ -15,4 +15,10 @@ This will start the development server on port 8000. Use your favorite web brows
 
 ## What I've Learned
 
-TODO
+I've learned so much in my journey. I think some of the highlights are:
+
+1. How frameworks and libraries like SQLAlchemy and Flask make a developer's life easier.
+2. What it takes to piece together a fully-operational software product. Hint: Being able to pay attention to the details is critical.
+3. How in a professional development environment, tools like git make it possible to scale from a one-person show to a full team of developers working on the same project.
+
+I certainly still have a lot to learn, but those three items were certainly my most valuable lessons from this learning journey.
